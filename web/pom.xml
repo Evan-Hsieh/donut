@@ -1,0 +1,104 @@
+<?xml version="1.0"?>
+<project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd" 
+xmlns="http://maven.apache.org/POM/4.0.0"
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+	    <groupId>com.evanxie.donut</groupId>
+	    <artifactId>donut</artifactId>
+	    <version>0.0.1</version>
+	</parent>
+	
+	<artifactId>web</artifactId>
+	<packaging>war</packaging>
+	<url>http://maven.apache.org</url>
+	<build>
+		<!-- 定义编译后的名字 ,这里不带版本号更方便一些-->
+		<finalName>${project.name}</finalName>
+		
+		<plugins>
+			<plugin>
+	    		<groupId>org.mortbay.jetty</groupId>
+	    		<artifactId>jetty-maven-plugin</artifactId>
+	    		<version>7.1.5.v20100705</version>
+    		</plugin>
+    		
+    		<!--  packaging war -->
+    		<plugin>  
+	      	    <groupId>org.apache.maven.plugins</groupId>  
+	            <artifactId>maven-war-plugin</artifactId>  
+	            <version>2.3</version>  
+	            <configuration>
+	                <archive>
+	                    <manifest>
+	                    	<!-- designate main class -->
+	                        <mainClass>com.evanxie.donut.web.commons.StartWeb</mainClass>
+	                        <addClasspath>true</addClasspath>
+	                        <classpathPrefix>../../lib</classpathPrefix>
+	                    </manifest>
+	                </archive>
+	                <packagingExcludes>WEB-INF/lib/**/*.*</packagingExcludes>
+	            </configuration>
+        	</plugin>
+        	
+         	<!-- move lib to ${project.parent.basedir}/integration/lib-->
+      		<plugin>  
+	            <groupId>org.apache.maven.plugins</groupId>  
+	            <artifactId>maven-dependency-plugin</artifactId>  
+	            <executions>  
+	                <execution>  
+	                    <id>copy</id>  
+	                    <phase>package</phase>  
+	                    <goals>  
+	                        <goal>copy-dependencies</goal>  
+	                    </goals>  
+	                    <configuration>
+	                        <outputDirectory>${project.build.directory}/lib</outputDirectory>  
+	                    </configuration>  
+	                </execution>  
+	            </executions>  
+        	</plugin>  
+        	
+        	<!-- copy mainclass to first file level of web.war -->
+         	<plugin>
+                <groupId>org.apache.maven.plugins</groupId>  
+                <artifactId>maven-antrun-plugin</artifactId>  
+                <version>1.7</version>  
+                <executions>
+                    <execution>  
+                        <id>main-class-placement</id>  
+                        <phase>prepare-package</phase>  
+                        <configuration>  
+                            <target>
+                                <copy todir="${project.build.directory}/${project.artifactId}/">  
+                                    <fileset dir="${project.build.directory}/classes/">  
+                                        <include name="**/*.*" />
+                                    </fileset>  
+                                </copy>
+                            </target>  
+                        </configuration>  
+                        <goals>
+                            <goal>run</goal>  
+                        </goals>
+                    </execution>  
+                </executions>  
+            </plugin>      
+		</plugins>
+	</build>
+	
+	<dependencies>
+	    <dependency>
+		    <groupId>junit</groupId>
+		    <artifactId>junit</artifactId>
+		    <scope>test</scope>
+	    </dependency>
+            <dependency>
+		    <groupId>org.eclipse.jetty</groupId>
+		    <artifactId>jetty-server</artifactId>
+		</dependency>
+		<dependency>
+            <groupId>org.eclipse.jetty</groupId>
+            <artifactId>jetty-webapp</artifactId>
+        </dependency>
+ 	</dependencies>
+</project>

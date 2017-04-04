@@ -1,0 +1,56 @@
+<assembly xmlns="http://maven.apache.org/plugins/maven-assembly-plugin/assembly/1.1.0"  
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"  
+xsi:schemaLocation="http://maven.apache.org/plugins/maven-assembly-plugin/assembly/1.1.0 http://maven.apache.org/xsd/assembly-1.1.0.xsd">  
+	<!-- 本版标识，如最后的打包名为sysimple，得到的发行包为sysimple-bin.zip -->
+	<id>bin</id>  
+	
+	<formats>  
+	<!-- 发行包格式 -->
+	<format>zip</format>  
+	
+	</formats>
+	<!-- 将依赖的jar包一起打包到lib下-->
+	<dependencySets>  
+		<dependencySet>  
+			<useProjectArtifact>true</useProjectArtifact>  
+			<outputDirectory>lib</outputDirectory>
+		</dependencySet>
+	</dependencySets>
+	<!--使用${parent.name}-${parent.version}调用父项目的属性 -->
+	<baseDirectory>${project.parent.name}-${project.parent.version}</baseDirectory>
+	
+	<fileSets>
+		<!-- 将src/bin下脚本文件放到发行包中的bin下 -->
+		<fileSet>  
+		<directory>bin</directory>  
+		<includes>
+		<include>*.*</include>  
+		</includes>  
+		<outputDirectory>bin</outputDirectory>  
+		</fileSet>
+		
+		<fileSet>  
+		<directory>${project.parent.basedir}/web/target/lib</directory>  
+		<includes>
+		<include>*.*</include>  
+		</includes>  
+		<outputDirectory>lib</outputDirectory>  
+		</fileSet>
+	   	
+		<fileSet>  
+		<directory>conf</directory>  
+		<includes>
+		<include>*.*</include>  
+		</includes>  
+		<outputDirectory>conf</outputDirectory>  
+		</fileSet>
+	</fileSets>
+	 
+	<files>
+	<!-- 将web子项目的war包放到发行包server/webapp下-->
+		<file>
+			<source>../web/target/web.war</source>
+			<outputDirectory>server/webapp</outputDirectory>
+		</file>
+	</files>
+</assembly>  

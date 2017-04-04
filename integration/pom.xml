@@ -1,0 +1,54 @@
+<?xml version="1.0"?>
+<project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd" 
+xmlns="http://maven.apache.org/POM/4.0.0"
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+	    <groupId>com.evanxie.donut</groupId>
+	    <artifactId>donut</artifactId>
+	    <version>0.0.1</version>
+  	</parent>
+
+	<artifactId>integration</artifactId>
+	<name>integration</name>
+	<url>http://maven.apache.org</url>
+
+  	<build>
+  	<!-- 定义编译后的名字 ,这里不带版本号更方便一些-->
+	<finalName>${project.name}</finalName>
+	  	<plugins>
+	  		<plugin>    
+			    <groupId>org.apache.maven.plugins</groupId>    
+			    <artifactId>maven-assembly-plugin</artifactId>
+			    <version>2.2.1</version>
+			    <configuration>
+					<!--  最后得到的发行包的名称 -->
+		            <finalName>${project.parent.name}-${project.parent.version}</finalName>  
+		            <descriptors>  
+						<!--打包描述文件，可以同时使用多个描述文件-->
+						<descriptor>src/main/assembly/linc.xml</descriptor>  
+			        </descriptors>  
+	            </configuration>  
+				<executions>  
+					<execution>  
+					<id>make-assembly</id>  
+					<!-- 将自定义打包过程同package生命周期绑定-->
+					<phase>package</phase>  
+					<goals>
+					<!-- 只执行一次-->
+					<goal>single</goal>  
+					</goals>  
+					</execution>  
+				</executions>
+			</plugin>
+	  	</plugins>
+  	</build>
+  
+	<dependencies>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<scope>test</scope>
+		</dependency>
+	</dependencies>
+</project>

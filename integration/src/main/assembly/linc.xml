@@ -32,7 +32,7 @@ xsi:schemaLocation="http://maven.apache.org/plugins/maven-assembly-plugin/assemb
 		<fileSet>  
 		<directory>${project.parent.basedir}/web/target/lib</directory>  
 		<includes>
-		<include>*.*</include>  
+			<include>*.*</include>  
 		</includes>  
 		<outputDirectory>lib</outputDirectory>  
 		</fileSet>

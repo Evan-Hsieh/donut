@@ -11,8 +11,6 @@ public class StartWeb {
 		server.setStopAtShutdown(true);
 		SelectChannelConnector connector = new SelectChannelConnector();
 		connector.setReuseAddress(false);
-		//Configuration config=ApplicationProperties.get();
-		//int port=config.getInt("sysimple.webserver.port", DefaultConfiguration.SYSIMPLE_WEBSERVER_PORT.getInt());	
         connector.setPort(3000);
         server.setConnectors(new Connector[]{connector}); 
         WebAppContext webAppContext;

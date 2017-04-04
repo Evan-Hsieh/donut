@@ -12,58 +12,32 @@ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
 	<artifactId>web</artifactId>
 	<packaging>war</packaging>
 	<url>http://maven.apache.org</url>
+	
 	<build>
-		<!-- 定义编译后的名字 ,这里不带版本号更方便一些-->
+		<!-- Designate the file name after compiled and packaged. -->
+		<!-- Setting it as project.name without version would be convenient-->
 		<finalName>${project.name}</finalName>
-		
+			
 		<plugins>
+			<!-- Set the version of compile jdk -->
+		    <plugin>
+	        	<groupId>org.apache.maven.plugins</groupId>  
+	            <artifactId>maven-compiler-plugin</artifactId>
+	            <configuration>  
+	                <source>1.7</source>  
+	                <target>1.7</target>  
+	            </configuration>    
+	        </plugin>
+	        
 			<plugin>
 	    		<groupId>org.mortbay.jetty</groupId>
 	    		<artifactId>jetty-maven-plugin</artifactId>
-	    		<version>7.1.5.v20100705</version>
     		</plugin>
-    		
-    		<!--  packaging war -->
-    		<plugin>  
-	      	    <groupId>org.apache.maven.plugins</groupId>  
-	            <artifactId>maven-war-plugin</artifactId>  
-	            <version>2.3</version>  
-	            <configuration>
-	                <archive>
-	                    <manifest>
-	                    	<!-- designate main class -->
-	                        <mainClass>com.evanxie.donut.web.commons.StartWeb</mainClass>
-	                        <addClasspath>true</addClasspath>
-	                        <classpathPrefix>../../lib</classpathPrefix>
-	                    </manifest>
-	                </archive>
-	                <packagingExcludes>WEB-INF/lib/**/*.*</packagingExcludes>
-	            </configuration>
-        	</plugin>
-        	
-         	<!-- move lib to ${project.parent.basedir}/integration/lib-->
-      		<plugin>  
-	            <groupId>org.apache.maven.plugins</groupId>  
-	            <artifactId>maven-dependency-plugin</artifactId>  
-	            <executions>  
-	                <execution>  
-	                    <id>copy</id>  
-	                    <phase>package</phase>  
-	                    <goals>  
-	                        <goal>copy-dependencies</goal>  
-	                    </goals>  
-	                    <configuration>
-	                        <outputDirectory>${project.build.directory}/lib</outputDirectory>  
-	                    </configuration>  
-	                </execution>  
-	            </executions>  
-        	</plugin>  
-        	
+    		    		     	
         	<!-- copy mainclass to first file level of web.war -->
          	<plugin>
                 <groupId>org.apache.maven.plugins</groupId>  
                 <artifactId>maven-antrun-plugin</artifactId>  
-                <version>1.7</version>  
                 <executions>
                     <execution>  
                         <id>main-class-placement</id>  
@@ -83,6 +57,46 @@ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
                     </execution>  
                 </executions>  
             </plugin>      
+
+        	
+         	<!-- Move dependency-lib to ${project.build.directory}/lib -->
+      		<!-- After several steps, the module integration will use  -->
+      		<!-- assembly-plugin to move these libs to ${project.parent.basedir}/integration/lib-->	
+      		<plugin>  
+	            <groupId>org.apache.maven.plugins</groupId>  
+	            <artifactId>maven-dependency-plugin</artifactId>  
+	            <executions>  
+	                <execution>  
+	                    <id>copy</id>  
+	                    <phase>package</phase>  
+	                    <goals>  
+	                        <goal>copy-dependencies</goal>  
+	                    </goals>  
+	                    <configuration>
+	                        <outputDirectory>${project.build.directory}/lib</outputDirectory>  
+	                    </configuration>  
+	                </execution>  
+	            </executions>  
+        	</plugin>  
+                  
+    		<!--  packaging war -->
+    		<plugin>  
+	      	    <groupId>org.apache.maven.plugins</groupId>  
+	            <artifactId>maven-war-plugin</artifactId>  
+	            <configuration>
+	                <archive>
+	                    <manifest>
+	                    	<!-- designate main class -->
+	                    	<!-- This operation is just for using after packaged, not for debug during dev -->
+	                        <mainClass>com.evanxie.donut.web.commons.StartWeb</mainClass>
+	                        <addClasspath>true</addClasspath>
+	                        <classpathPrefix>../../lib</classpathPrefix>
+	                    </manifest>
+	                </archive>	                
+	                <packagingExcludes>WEB-INF/lib/**/*.*</packagingExcludes>
+	            </configuration>
+        	</plugin>        	
+       	    
 		</plugins>
 	</build>
 	
@@ -100,5 +114,12 @@ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
             <groupId>org.eclipse.jetty</groupId>
             <artifactId>jetty-webapp</artifactId>
         </dependency>
+               
+        <!-- Denpend self module commons -->
+        <dependency>
+    		<groupId>com.evanxie.donut</groupId>
+    		<artifactId>commons</artifactId>
+    		<version>${project.version}</version>
+    	</dependency>
  	</dependencies>
 </project>

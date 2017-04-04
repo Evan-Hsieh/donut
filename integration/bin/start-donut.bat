@@ -1,1 +1,1 @@
-java -jar  -Ddonut.conf.dir=../conf ../server/webapp/web.war ../server/webapp/web.war
+java -jar -DDONUT_HOME=.. -Dlog4j.configuration=file:../conf/application-log4j.properties ../server/webapp/web.war ../server/webapp/web.war

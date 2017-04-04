@@ -1,0 +1,19 @@
+2017-04-04 21:52:04 [INFO] com.evanxie.donut.web.commons.StartWeb.main(StartWeb.java:23) main : starting application in port:3000
+  2017-04-04 21:52:04 [INFO] org.eclipse.jetty.util.log.Log.initialized(Log.java:186) main : Logging initialized @240ms
+  2017-04-04 21:52:04 [INFO] org.eclipse.jetty.server.Server.doStart(Server.java:327) main : jetty-9.2.7.v20150116
+  2017-04-04 21:52:04 [INFO] org.eclipse.jetty.webapp.StandardDescriptorProcessor.visitServlet(StandardDescriptorProcessor.java:297) main : NO JSP Support for /, did not find org.eclipse.jetty.jsp.JettyJspServlet
+  2017-04-04 21:52:04 [INFO] org.eclipse.jetty.server.handler.ContextHandler.doStart(ContextHandler.java:744) main : Started o.e.j.w.WebAppContext@528f1577{/,file:/D:/Users/Ethan/EclipseWorkspace/donut/web/src/main/webapp/,AVAILABLE}{src/main/webapp}
+  2017-04-04 21:52:04 [INFO] org.eclipse.jetty.server.AbstractConnector.doStart(AbstractConnector.java:266) main : Started ServerConnector@78f30883{HTTP/1.1}{0.0.0.0:3000}
+  2017-04-04 21:52:04 [INFO] org.eclipse.jetty.server.Server.doStart(Server.java:379) main : Started @493ms
+  2017-04-04 21:52:04 [INFO] com.evanxie.donut.web.commons.EmbeddedServer.start(EmbeddedServer.java:86) main : ********************************************************
+  2017-04-04 21:52:04 [INFO] com.evanxie.donut.web.commons.EmbeddedServer.start(EmbeddedServer.java:87) main : The Dodut Has Started !!!
+  2017-04-04 23:50:19 [INFO] com.evanxie.donut.web.commons.StartWeb.main(StartWeb.java:23) main : starting application in port:3000
+  2017-04-04 23:50:19 [INFO] org.eclipse.jetty.util.log.Log.initialized(Log.java:186) main : Logging initialized @172ms
+  2017-04-04 23:50:19 [INFO] org.eclipse.jetty.server.Server.doStart(Server.java:327) main : jetty-9.2.7.v20150116
+  2017-04-04 23:50:19 [INFO] org.eclipse.jetty.webapp.StandardDescriptorProcessor.visitServlet(StandardDescriptorProcessor.java:297) main : NO JSP Support for /, did not find org.eclipse.jetty.jsp.JettyJspServlet
+  2017-04-04 23:50:19 [INFO] org.eclipse.jetty.server.handler.ContextHandler.doStart(ContextHandler.java:744) main : Started o.e.j.w.WebAppContext@5427ee05{/,file:/D:/Users/Ethan/EclipseWorkspace/donut/web/src/main/webapp/,AVAILABLE}{src/main/webapp}
+  2017-04-04 23:50:19 [INFO] org.eclipse.jetty.server.AbstractConnector.doStart(AbstractConnector.java:266) main : Started ServerConnector@265dbc82{HTTP/1.1}{0.0.0.0:3000}
+  2017-04-04 23:50:19 [INFO] org.eclipse.jetty.server.Server.doStart(Server.java:379) main : Started @418ms
+  2017-04-04 23:50:19 [INFO] com.evanxie.donut.web.commons.EmbeddedServer.start(EmbeddedServer.java:86) main : ********************************************************
+  2017-04-04 23:50:19 [INFO] com.evanxie.donut.web.commons.EmbeddedServer.start(EmbeddedServer.java:87) main : The Dodut Has Started !!!
+  

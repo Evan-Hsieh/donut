@@ -31,7 +31,7 @@ public class EmbeddedServer {
      * @throws IOException
      */
     public EmbeddedServer(int port,boolean isWar,String warPath) throws IOException{
-    	this(port,null,false,warPath);
+    	this(port,null,isWar,warPath);
     }
     private EmbeddedServer(int port, String path,boolean isWar,String warPath) throws IOException {
         Connector connector = getConnector(port);

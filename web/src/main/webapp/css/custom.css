@@ -1,0 +1,27 @@
+.bg-white{
+	background:white;
+}
+
+.logo-box{
+	margin:6px;
+	height:60px;
+	width:60px;
+	float:left;
+	background:#605ca8;
+}
+
+.text-intro{
+	margin:20px auto;
+	color:#605ca8;
+	font-size:36px;
+	font-family: "lucida grande", "Hiragino Sans GB", "Microsoft YaHei";
+	font-style:italic;
+}
+
+.text-detail{
+	margin:10px auto;
+	color:#605ca8;
+	font-size:22px;
+	font-family: "lucida grande", "Hiragino Sans GB", "Microsoft YaHei";
+	font-style:italic
+}
